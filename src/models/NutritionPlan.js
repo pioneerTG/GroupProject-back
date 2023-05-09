@@ -1,6 +1,6 @@
 import Sequelize from "sequelize";
 
-module.exports = class ExercisePlan extends Sequelize.Model {
+module.exports = class NutritionPlan extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
@@ -12,27 +12,43 @@ module.exports = class ExercisePlan extends Sequelize.Model {
         },
         createAt: {
           // INT
-          type: Sequelize.DATEONLY, // date 타입
+          type: Sequelize.DATEONLY,
           allowNull: false,
         },
-        type: {
+        name: {
           // STRING (100자까지), Null 허용 X
           type: Sequelize.STRING(100),
           allowNull: false,
         },
-        count: {
+        calorie: {
           // INT, 기본 값 : 0
-          type: Sequelize.INTEGER,
+          type: Sequelize.DOUBLE,
           allowNull: false,
           defaultValue: 0,
         },
+        protein: { // 단백질
+          // INT, 기본 값 : 0
+          type: Sequelize.DOUBLE,
+          allowNull: false,
+          defaultValue: 0,
+        },  
+        fat: { // 지방
+          // INT
+          type: Sequelize.DOUBLE,
+          allowNull: false,
+        },
+        cho: { // 탄수화물
+          // INT
+          type: Sequelize.DOUBLE,
+          allowNull: false,
+        },          
       },
       {
         sequelize,
         timestamps: false,
         underscored: false,
-        modelName: "ExercisePlanner",
-        tableName: "exerciseplanner",
+        modelName: "NutritionalPlanner",
+        tableName: "nutritionalplanner",
         paranoid: false,
         charset: "utf8",
         collate: "utf8_unicode_ci",
@@ -41,6 +57,6 @@ module.exports = class ExercisePlan extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.ExercisePlan .belongsTo(db.User, { foreignKey: "user_id", targetKey: "id" });
+    db.NutritionPlan .belongsTo(db.User, { foreignKey: "user_id", targetKey: "id" });
   }
 }
