@@ -19,7 +19,6 @@ export const createExercisePlan = async(req, res, next) => {
         count,
       });
     }
-
     res.status(200).json({ message: "Exercise plan created successfully." });
   } catch (error) {
     console.error(error);
@@ -36,15 +35,17 @@ export const createNutritionPlan = async(req, res, next) => {
     // const user_id = req.user.id; // 사용자 ID는 인증된 사용자로부터 얻을 수 있어야 함
     // Plan 배열의 각 요소에 대해 DB에 저장
     for (let i = 0; i < parsedPlan.length; i++) {
-      const { date, exercise, set, count } = parsedPlan[i];
+      const { createAt, name, calorie, protein, fat, cho } = parsedPlan[i];
       await NutritionPlanner.create({
         user_id: req.user.id,
         createAt,
-        type,
-        count,
+        name,
+        calorie,
+        protein,
+        fat,
+        cho,
       });
     }
-
     res.status(200).json({ message: "Exercise plan created successfully." });
   } catch (error) {
     console.error(error);
