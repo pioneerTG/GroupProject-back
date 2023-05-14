@@ -10,9 +10,9 @@ module.exports = class NutritionPlan extends Sequelize.Model {
           autoIncrement: true,
           primaryKey: true,
         },
-        createAt: {
+        createdAt: {
           // INT
-          type: Sequelize.DATEONLY,
+          type: Sequelize.DATE,
           allowNull: false,
         },
         name: {

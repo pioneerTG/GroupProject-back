@@ -10,9 +10,9 @@ module.exports = class ExercisePlan extends Sequelize.Model {
           autoIncrement: true,
           primaryKey: true,
         },
-        createAt: {
+        createdAt: {
           // INT
-          type: Sequelize.DATEONLY, // date 타입
+          type: Sequelize.DATE, // date 타입
           allowNull: false,
         },
         type: {
@@ -21,6 +21,12 @@ module.exports = class ExercisePlan extends Sequelize.Model {
           allowNull: false,
         },
         count: {
+          // INT, 기본 값 : 0
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          defaultValue: 0,
+        },
+        set: {
           // INT, 기본 값 : 0
           type: Sequelize.INTEGER,
           allowNull: false,
