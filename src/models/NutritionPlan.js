@@ -11,7 +11,6 @@ module.exports = class NutritionPlan extends Sequelize.Model {
           primaryKey: true,
         },
         createdAt: {
-          // INT
           type: Sequelize.DATE,
           allowNull: false,
         },
@@ -41,14 +40,19 @@ module.exports = class NutritionPlan extends Sequelize.Model {
           // INT
           type: Sequelize.DOUBLE,
           allowNull: false,
-        },          
+        },    
+        check: {
+          type: Sequelize.BOOLEAN,
+          allowNull: false,
+          defaultValue: false,
+        },      
       },
       {
         sequelize,
         timestamps: false,
         underscored: false,
-        modelName: "NutritionalPlanner",
-        tableName: "nutritionalplanner",
+        modelName: "NutritionalPlan",
+        tableName: "nutritionalPlan",
         paranoid: false,
         charset: "utf8",
         collate: "utf8_unicode_ci",

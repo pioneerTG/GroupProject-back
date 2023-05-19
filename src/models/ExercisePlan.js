@@ -12,7 +12,7 @@ module.exports = class ExercisePlan extends Sequelize.Model {
         },
         createdAt: {
           // INT
-          type: Sequelize.DATE, // date 타입
+          type: Sequelize.DATE, // dateTime 타입
           allowNull: false,
         },
         type: {
@@ -26,19 +26,18 @@ module.exports = class ExercisePlan extends Sequelize.Model {
           allowNull: false,
           defaultValue: 0,
         },
-        set: {
-          // INT, 기본 값 : 0
-          type: Sequelize.INTEGER,
+        check: {
+          type: Sequelize.BOOLEAN,
           allowNull: false,
-          defaultValue: 0,
+          defaultValue: false,
         },
       },
       {
         sequelize,
         timestamps: false,
         underscored: false,
-        modelName: "ExercisePlanner",
-        tableName: "exerciseplanner",
+        modelName: "ExercisePlan",
+        tableName: "exercisePlan",
         paranoid: false,
         charset: "utf8",
         collate: "utf8_unicode_ci",
